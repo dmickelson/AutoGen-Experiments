@@ -1,4 +1,5 @@
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
+import os
 from dotenv import load_dotenv
 import openai
 
@@ -15,7 +16,8 @@ assistant = AssistantAgent(name="assistant", llm_config={
 # Create user proxy agent
 user_proxy = UserProxyAgent(
     name="user_proxy",
-    code_execution_config={"work_dir": "coding"})
+    code_execution_config={"work_dir": "coding",
+                           "use_docker": True})
 
 # Start the conversation
 user_proxy.initiate_chat(

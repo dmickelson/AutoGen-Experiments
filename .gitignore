@@ -1,3 +1,6 @@
 .venv/
 OAI_CONFIG_LIST
 .cache/
+.env
+.vscode/settings.json
+coding/

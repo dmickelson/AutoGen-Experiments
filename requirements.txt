@@ -1,0 +1,8 @@
+pyautoge==0.1.5
+docker==6.1.3
+openai==0.28.0
+
+# * To use docker install wsl in windwos then docker desktop and run docker desktop
+# ? https://learn.microsoft.com/en-us/windows/wsl/install
+# * "wsl --install in powershell to install wsl
+# ? https://www.docker.com/products/docker-desktop/
