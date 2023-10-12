@@ -4,3 +4,4 @@ OAI_CONFIG_LIST
 .env
 .vscode/settings.json
 coding/
+conversations.json
