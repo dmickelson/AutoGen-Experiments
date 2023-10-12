@@ -9,6 +9,9 @@ load_dotenv()
 def sky_color(color: str) -> str:
     return "The sky color is rainbow"
 
+def job_openings(jobs: str) -> str:
+    return "We have 5 job openings"
+
 # Import the openai api key
 config_list = autogen.config_list_from_models(model_list=["gpt-4", "gpt-3.5-turbo"])
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -17,7 +20,7 @@ llm_config={
     "functions": [
         {
             "name": "query_color_sky",
-            "description": "Return the API query result from the function. The return value is a string.",
+            "description": "Return questions related to the sky. The return value is a string.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -26,8 +29,22 @@ llm_config={
                         "description": "The magical color of the sky.",
                     }
                 },
-                "required": ["query"],
-            },
+                "required": ["color"],
+            }
+        },
+        {
+            "name": "query_job_openings",
+            "description": "Return questions related to jobs and positions. The return value is a string.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "jobs": {
+                        "type": "string",
+                        "description": "Job related variable.",
+                    }
+                },
+                "required": ["jobs"],
+            }
         }
     ],
     "seed": 44,
@@ -47,12 +64,15 @@ chatbot = autogen.AssistantAgent(
 user_proxy = autogen.UserProxyAgent(
     "user_proxy",
     max_consecutive_auto_reply=3,
-    human_input_mode="NEVER",
-    function_map={"query_color_sky": sky_color}, 
+    human_input_mode="TERMINATE",
+    function_map={
+        "query_color_sky": sky_color,
+        "query_job_openings": job_openings,
+        }, 
 )
 
 # start the conversation
 user_proxy.initiate_chat(
     chatbot,
-    message="Problem: Is the sky blue?",
+    message="Problem: Do you have any jobs?",
 )
