@@ -1,6 +1,13 @@
-pyautogen==0.1.10
-docker==6.1.3
-openai==0.28.0
+pyautogen
+docker
+openai
+requests
+beautifulsoup
+yfinance
+pandas
+matplotlib
+dotenv
+autogen
 
 # * To use docker install wsl in windwos then docker desktop and run docker desktop
 # ? https://learn.microsoft.com/en-us/windows/wsl/install
