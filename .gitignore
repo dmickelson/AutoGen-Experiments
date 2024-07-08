@@ -1,6 +1,7 @@
 .venv/
 OAI_CONFIG_LIST
 .cache/
+.vscode/
 .env
 .vscode/settings.json
 coding/

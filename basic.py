@@ -1,3 +1,24 @@
+"""
+This script provides a basic setup for an AutoGen chat environment.
+It demonstrates how to create a simple conversation between an assistant and a user proxy.
+
+The script does the following:
+1. Configures an AssistantAgent with specific LLM settings.
+2. Sets up a UserProxyAgent with code execution capabilities.
+3. Initiates a chat with a specific task related to stock price charting.
+
+Dependencies:
+    - autogen
+    - os
+    - dotenv
+    - openai
+
+Environment Variables:
+    - OPENAI_API_KEY: Your OpenAI API key
+
+Output:
+    - Initiates a chat session to plot a chart of specified stock prices.
+"""
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 import os
 from dotenv import load_dotenv
@@ -11,11 +32,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Create assistant agent
 assistant = AssistantAgent(
-    name="assistant", 
+    name="assistant",
     llm_config={
         "seed": 42,
         "config_list": config_list,
-        "temperature":0
+        "temperature": 0
     }
 )
 
